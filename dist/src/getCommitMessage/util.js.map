@@ -1,1 +1,0 @@
-{"version":3,"file":"util.js","sourceRoot":"","sources":["../../../src/getCommitMessage/util.ts"],"names":[],"mappings":"AAKA,MAAM,CAAC,MAAM,sBAAsB,GAAG,CACpC,SAAgC,EACW,EAAE;IAC7C,IAAI,CAAC,SAAS,CAAC,aAAa,EAAE;QAC5B,OAAO,KAAK,CAAA;KACb;IACD,OAAO,IAAI,CAAA;AACb,CAAC,CAAA"}
