@@ -15,9 +15,11 @@ export const ACMGpt = (apiKey: string) => ({
   },
 })
 
-if (!Bun.env.OPENAI_API_KEY) {
-  throw new Error('Enviroment var: OPENAI_API_KEY is not defined')
-}
-const acmGpt = ACMGpt(Bun.env.OPENAI_API_KEY)
+// SAMPLE:
 
-console.log(await acmGpt.commit('GPT呼び出しとパース処理の分離をした'))
+// if (!Bun.env.OPENAI_API_KEY) {
+//   throw new Error('Enviroment var: OPENAI_API_KEY is not defined')
+// }
+// const acmGpt = ACMGpt(Bun.env.OPENAI_API_KEY)
+
+// console.log(await acmGpt.commit('GPT呼び出しとパース処理の分離をした'))
