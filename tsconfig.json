@@ -1,12 +1,11 @@
 {
+  "include": ["src/**/*.ts"],
   "compilerOptions": {
     "lib": ["ESNext"],
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "bundler",
     "moduleDetection": "force",
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
     "composite": true,
     "strict": true,
     "downlevelIteration": true,
@@ -16,7 +15,10 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
     "types": [
-      "bun-types" // add Bun global
-    ]
+      "bun-types" // add, Bun global
+    ],
+    "declaration": true,  // ← 追記（コンパイルしたtsファイルの中でexportしているもの全ての型定義ファイルを出力する）
+    "sourceMap": true,  // ← 追記（ソースマップを出力する）
+    "outDir": "./dist",
   }
 }
