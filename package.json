@@ -1,5 +1,5 @@
 {
-  "name": "avaice-bun-template",
+  "name": "acmgpt",
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
@@ -17,5 +17,8 @@
   },
   "peerDependencies": {
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "openai": "^4.6.0"
   }
 }
