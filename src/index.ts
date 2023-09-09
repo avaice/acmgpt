@@ -1,15 +1,23 @@
+import { callGPT } from './callGPT'
 import { getCommitMessage } from './getCommitMessage'
+import { functions } from './resources/functions'
+import { prompt } from './resources/prompt'
 
-const work = ''
+export const ACMGpt = (apiKey: string) => ({
+  commit: async (work: string) => {
+    const gptResult = await callGPT({
+      initialPrompt: prompt,
+      prompt: { role: 'user', content: work },
+      functions,
+      apiKey,
+    })
+    return await getCommitMessage(gptResult)
+  },
+})
 
-const commitCheckResult = await getCommitMessage(work)
-if (commitCheckResult.status === 'error') {
-  console.log(commitCheckResult)
-} else {
-  if (commitCheckResult.data.result === 'accept') {
-    console.log(`コミットメッセージ: "${commitCheckResult.data.commit_msg}"`)
-    console.log(`コミットの適切度: ${100 * commitCheckResult.data.quality}%`)
-  } else {
-    console.log(`Rejected: "${commitCheckResult.data.reason}"`)
-  }
+if (!Bun.env.OPENAI_API_KEY) {
+  throw new Error('Enviroment var: OPENAI_API_KEY is not defined')
 }
+const acmGpt = ACMGpt(Bun.env.OPENAI_API_KEY)
+
+console.log(await acmGpt.commit('GPT呼び出しとパース処理の分離をした'))
