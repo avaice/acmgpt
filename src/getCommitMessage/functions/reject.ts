@@ -5,7 +5,7 @@ export const gptFunctionReject = (
   gptResult: ChatCompletionMessage & {
     function_call: ChatCompletionMessage.FunctionCall
   }
-): Result<{ commit_msg: string; quality: number }, string> => {
+): Result<{ result: 'reject'; reason: string }, string> => {
   const notValidatedResponse = JSON.parse(gptResult.function_call.arguments)
   if (typeof notValidatedResponse.reason !== 'string') {
     return {
@@ -14,7 +14,10 @@ export const gptFunctionReject = (
     }
   }
   return {
-    status: 'error',
-    reason: notValidatedResponse.reason,
+    status: 'succeed',
+    data: {
+      result: 'reject',
+      reason: notValidatedResponse.reason,
+    },
   }
 }

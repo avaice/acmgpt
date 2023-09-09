@@ -5,11 +5,14 @@ export const gptFunctionCommit = (
   gptResult: ChatCompletionMessage & {
     function_call: ChatCompletionMessage.FunctionCall
   }
-): Result<{ commit_msg: string; quality: number }, string> => {
+): Result<
+  { result: 'accept'; commit_msg: string; quality: number },
+  string
+> => {
   const notValidatedResponse = JSON.parse(gptResult.function_call.arguments)
   if (
     typeof notValidatedResponse.commit_msg !== 'string' ||
-    typeof notValidatedResponse.quality !== 'number'
+    typeof notValidatedResponse.quality === 'undefined'
   ) {
     return {
       status: 'error',
@@ -19,8 +22,9 @@ export const gptFunctionCommit = (
   return {
     status: 'succeed',
     data: {
+      result: 'accept',
       commit_msg: notValidatedResponse.commit_msg,
-      quality: notValidatedResponse.quality,
+      quality: parseFloat(notValidatedResponse.quality),
     },
   }
 }

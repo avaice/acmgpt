@@ -4,11 +4,12 @@ import { prompt } from '../resources/prompt'
 import { Result } from '../types'
 import { gptFunctionCommit } from './functions/commit'
 import { gptFunctionReject } from './functions/reject'
+import { GetCommitResponse } from './types'
 import { isIncludesFunctionCall } from './util'
 
 export const getCommitMessage = async (
   work: string
-): Promise<Result<{ commit_msg: string; quality: number }, string>> => {
+): Promise<Result<GetCommitResponse, string>> => {
   const gptResult = await callGPT({
     initialPrompt: prompt,
     prompt: { role: 'user', content: work },
