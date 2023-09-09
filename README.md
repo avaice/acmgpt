@@ -1,5 +1,4 @@
-# avaice-bun-template
+# ACMGPT
 
-bun + TypeScriptでCLIアプリケーションを開発するためのテンプレート
-
-This project was created using `bun init` in bun v1.0.0. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Auto Commit Message GPT
+自動でコミットメッセージを考えてくれる
