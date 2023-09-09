@@ -11,7 +11,7 @@ export const functions: readonly OpenAI.Chat.Completions.ChatCompletionCreatePar
         properties: {
           reason: {
             type: 'string',
-            description: 'コミットがリジェクトされた理由',
+            description: 'コミットがリジェクトされた理由の説明',
           },
         },
         required: ['commit_msg', 'quality'],
